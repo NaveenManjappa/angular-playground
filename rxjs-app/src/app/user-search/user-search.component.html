@@ -1,0 +1,6 @@
+<h3>User Search</h3>
+<input type="text" [formControl]="searchControl" placeholder="Search Users...">
+<div *ngIf="loading">Loading...</div>
+<div *ngFor="let user of users">
+  {{ user.name }} : ({{ user.email }})
+</div>
