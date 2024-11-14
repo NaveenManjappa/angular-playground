@@ -9,8 +9,11 @@ import { ThirdComponent } from './third/third.component';
 export const routes: Routes = [
   { path:'first-component', title:'First Component', component:FirstComponent,
     children: [
-      { path:'child-a', title:'Child A', component: ChildAComponent },
-      { path: 'child-b', title:'Child B', component: ChildBComponent }
+      { path:'child-a', title:'Child A', 
+        loadComponent: () => import('./first/child-a/child-a.component').then(c => c.ChildAComponent) },
+      { path: 'child-b', title:'Child B', 
+        loadComponent : () => import('./first/child-b/child-b.component').then(c => c.ChildBComponent) //lazy loading a route or component
+      }
     ]
    },
   { path:'second-component',title:'Second Component', component:SecondComponent },
