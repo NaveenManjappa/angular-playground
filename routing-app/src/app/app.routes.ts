@@ -4,6 +4,7 @@ import { SecondComponent } from './second/second.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ChildAComponent } from './first/child-a/child-a.component';
 import { ChildBComponent } from './first/child-b/child-b.component';
+import { ThirdComponent } from './third/third.component';
 
 export const routes: Routes = [
   { path:'first-component', title:'First Component', component:FirstComponent,
@@ -13,6 +14,7 @@ export const routes: Routes = [
     ]
    },
   { path:'second-component',title:'Second Component', component:SecondComponent },
+  { path:'third-component/:id',title:'Third Component',component:ThirdComponent },
   { path: '',redirectTo:'/first-component',pathMatch:'full'},
   { path: '**', component:PagenotfoundComponent }
 ];
