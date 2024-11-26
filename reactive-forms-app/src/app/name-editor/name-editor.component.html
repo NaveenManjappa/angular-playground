@@ -1,0 +1,11 @@
+<div class="name-prompt">
+ 
+  <input type="text" [formControl]="name" placeholder="Enter your name here">
+</div>
+<div class="entered-name">
+  <label for="">Entered name:</label>
+  <label for="EnteredName">{{ name.value }}</label>
+</div>
+<div class="entered-name">{{name.value}}</div>
+<div class="entered-name">{{ name.valueChanges | async }}</div>
+
