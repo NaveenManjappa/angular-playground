@@ -10,6 +10,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './name-editor.component.css'
 })
 export class NameEditorComponent implements OnInit {
+  
   name: FormControl = new FormControl('');
 
   ngOnInit() {
