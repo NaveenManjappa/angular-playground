@@ -16,3 +16,11 @@
   padding: 20px;
   font-size: 30px;
 }
+
+.btn-update {
+  padding: 10px;
+  background-color: rgb(210, 241, 210);
+  color: black;
+  border-radius: 15px;
+  cursor: pointer;
+}

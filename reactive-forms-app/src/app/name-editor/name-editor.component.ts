@@ -17,4 +17,8 @@ export class NameEditorComponent implements OnInit {
       console.log(res);
     })
   }
+
+  updateName(){
+    this.name.setValue('Nancy');
+  }
 }
