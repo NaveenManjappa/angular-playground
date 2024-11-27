@@ -10,12 +10,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class ProfileEditorComponent {
 
-  profileEditor:FormGroup = new FormGroup({
+  profileForm:FormGroup = new FormGroup({
     firstName: new FormControl(),
     lastName: new FormControl()
   });
 
   saveUser(){
-    console.log(this.profileEditor);
+    console.log(this.profileForm.value);
   }
 }
