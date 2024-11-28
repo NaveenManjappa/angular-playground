@@ -9,6 +9,7 @@
       <label for="">Last Name:</label>
       <input type="text" formControlName="lastName">
     </div>
+    
     <div class="address" formGroupName="address">
       <h3>Address</h3>
       <label for="street">Street:</label>
@@ -23,9 +24,20 @@
       <label for="zip">Zip:</label>
       <input type="text" formControlName="zip">
     </div>    
-    <button class="btn-submit" type="submit" [disabled]="!profileForm.valid">Save Profile</button>   
+
+    <div formArrayName="aliases">
+      <h3>Aliases:</h3>
+      <button type="button" (click)="addAlias()">+ Add another Alias</button>
+      <div *ngFor="let alias of aliases.controls; let i =index">
+        <label for="alias-{{i}}">Alias:</label>
+        <input type="text" id="alias-{{i}}" [formControlName]="i" >
+      </div>
+    </div>
+
+    <button class="btn-submit" type="submit" [disabled]="!profileForm.valid">Submit</button>   
     
     </form>   
+    <div class="content"><button class="btn-submit" type="button" (click)="updateProfile()">Update Profile</button></div>
     <div class="content"><p>Form Value: {{ profileForm.value | json }}</p></div>
     <div class="content"><p>Form Status: {{ profileForm.status }}</p></div>      
 </div>

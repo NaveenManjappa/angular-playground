@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -32,11 +32,20 @@ export class ProfileEditorComponent {
       city:[''],
       state:[''],
       zip:['']
-    })
-  })
+    }),
+    aliases: this.formBuilder.array([])
+  });
+
+  get aliases() {
+    return this.profileForm.get('aliases') as FormArray;
+  }
+
+  addAlias() {   
+    this.aliases.push(this.formBuilder.control(''));
+  }
 
   saveProfile(){
-    console.log(this.profileForm);
+    console.log(this.profileForm.value);
   }
 
   updateProfile() {

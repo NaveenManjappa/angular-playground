@@ -2,15 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  
+  flex-direction: column; 
+  row-gap: 10px; 
 }
 
 form {  
   width: 300px;
   padding: 20px;
   background-color: #f0f0f0;
-  border-radius: 5px;
+  border-radius: 5px;  
 }
 
 .field {
