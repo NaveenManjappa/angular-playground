@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form [formGroup]="profileForm">
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
     <h3></h3>
     <div class="field">
       <label for="">First Name:</label>
@@ -23,7 +23,7 @@
       <label for="zip">Zip:</label>
       <input type="text" formControlName="zip">
     </div>    
-    <button class="btn-submit" type="button" (click)="updateProfile()">Update Profile</button>   
+    <button class="btn-submit" type="submit">Save Profile</button>   
     
     </form>   
         

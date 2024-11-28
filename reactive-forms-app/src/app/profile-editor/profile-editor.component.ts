@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -11,16 +11,29 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class ProfileEditorComponent {
 
-  profileForm:FormGroup = new FormGroup({
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    address: new FormGroup({
-      street: new FormControl(),
-      city: new FormControl(),
-      state: new FormControl(),
-      zip: new FormControl()
+  // profileForm:FormGroup = new FormGroup({
+  //   firstName: new FormControl(),
+  //   lastName: new FormControl(),
+  //   address: new FormGroup({
+  //     street: new FormControl(),
+  //     city: new FormControl(),
+  //     state: new FormControl(),
+  //     zip: new FormControl()
+  //   })
+  // });
+
+  // using FormBuilder service
+  private formBuilder = inject(FormBuilder);
+  profileForm = this.formBuilder.group({
+    firstName: [''],
+    lastName:[''],
+    address: this.formBuilder.group({
+      street:[''],
+      city:[''],
+      state:[''],
+      zip:['']
     })
-  });
+  })
 
   saveProfile(){
     console.log(this.profileForm.value);
