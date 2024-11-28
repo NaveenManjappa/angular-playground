@@ -23,12 +23,14 @@
       <label for="zip">Zip:</label>
       <input type="text" formControlName="zip">
     </div>    
-    <button class="btn-submit" type="submit">Save Profile</button>   
+    <button class="btn-submit" type="submit" [disabled]="!profileForm.valid">Save Profile</button>   
     
     </form>   
-        
+    <div class="content"><p>Form Value: {{ profileForm.value | json }}</p></div>
+    <div class="content"><p>Form Status: {{ profileForm.status }}</p></div>      
 </div>
-<div><p>Form Value: {{ profileForm.value | json }}</p></div>
+
+
 
 
 

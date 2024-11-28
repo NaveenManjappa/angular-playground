@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -25,7 +25,7 @@ export class ProfileEditorComponent {
   // using FormBuilder service
   private formBuilder = inject(FormBuilder);
   profileForm = this.formBuilder.group({
-    firstName: [''],
+    firstName: ['',Validators.required],
     lastName:[''],
     address: this.formBuilder.group({
       street:[''],
@@ -36,7 +36,7 @@ export class ProfileEditorComponent {
   })
 
   saveProfile(){
-    console.log(this.profileForm.value);
+    console.log(this.profileForm);
   }
 
   updateProfile() {

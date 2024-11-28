@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
   
 }
 
@@ -39,5 +39,9 @@ input[type="text"] {
   border-radius: 3px;
   cursor: pointer;
 
-  
+}
+
+.content {
+  background-color: #f0f0f0;
+  padding: 10px;
 }
