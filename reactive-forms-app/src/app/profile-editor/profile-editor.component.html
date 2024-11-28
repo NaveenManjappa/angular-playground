@@ -1,5 +1,6 @@
 <div class="form-container">
   <form [formGroup]="profileForm" (ngSubmit)="saveUser()">
+    <h3></h3>
     <div class="field">
       <label for="">First Name:</label>
       <input type="text" formControlName="firstName">
@@ -8,8 +9,27 @@
       <label for="">Last Name:</label>
       <input type="text" formControlName="lastName">
     </div>
-    <button class="btn-submit" type="submit">Save</button>
+    <div class="address" formGroupName="address">
+      <h3>Address</h3>
+      <label for="street">Street:</label>
+      <input type="text" formControlName="street">
+
+      <label for="city">City:</label>
+      <input type="text" formControlName="city">
+
+      <label for="state">State:</label>
+      <input type="text" formControlName="state">
+
+      <label for="zip">Zip:</label>
+      <input type="text" formControlName="zip">
+    </div>    
+    <button class="btn-submit" type="submit">Update Profile</button>   
     
-    </form>
+    </form>   
+        
 </div>
+<p>Form Value: {{ profileForm.value | json }}</p>
+
+
+ 
 
