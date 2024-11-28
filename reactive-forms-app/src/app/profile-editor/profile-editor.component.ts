@@ -22,7 +22,28 @@ export class ProfileEditorComponent {
     })
   });
 
-  saveUser(){
+  saveProfile(){
     console.log(this.profileForm.value);
+  }
+
+  updateProfile() {
+
+    this.profileForm.patchValue({
+      firstName: 'Nancy',
+      address: {
+        street:'Drake way'
+      }
+    });
+
+    // this will throw runtime error ERROR RuntimeError: NG01002: Must supply a value for form control with name: 'city'
+
+    // this.profileForm.setValue({
+    //   firstName: 'Nancy',
+    //   lastName: 'Pelocy',
+    //   address: {
+    //     street:'Drake way'
+    //   }
+    // });
+
   }
 }

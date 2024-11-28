@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form [formGroup]="profileForm" (ngSubmit)="saveUser()">
+  <form [formGroup]="profileForm">
     <h3></h3>
     <div class="field">
       <label for="">First Name:</label>
@@ -23,12 +23,13 @@
       <label for="zip">Zip:</label>
       <input type="text" formControlName="zip">
     </div>    
-    <button class="btn-submit" type="submit">Update Profile</button>   
+    <button class="btn-submit" type="button" (click)="updateProfile()">Update Profile</button>   
     
     </form>   
         
 </div>
-<p>Form Value: {{ profileForm.value | json }}</p>
+<div><p>Form Value: {{ profileForm.value | json }}</p></div>
+
 
 
  
