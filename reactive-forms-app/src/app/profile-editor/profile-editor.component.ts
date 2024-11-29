@@ -11,16 +11,16 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Va
 })
 export class ProfileEditorComponent {
 
-  // profileForm:FormGroup = new FormGroup({
-  //   firstName: new FormControl(),
-  //   lastName: new FormControl(),
-  //   address: new FormGroup({
-  //     street: new FormControl(),
-  //     city: new FormControl(),
-  //     state: new FormControl(),
-  //     zip: new FormControl()
-  //   })
-  // });
+  profileForm1:FormGroup = new FormGroup({
+    firstName: new FormControl<number>(0),
+    lastName: new FormControl(),
+    address: new FormGroup({
+      street: new FormControl(),
+      city: new FormControl(),
+      state: new FormControl(),
+      zip: new FormControl()
+    })
+  });
 
   // using FormBuilder service
   private formBuilder = inject(FormBuilder);
@@ -33,7 +33,7 @@ export class ProfileEditorComponent {
       state:[''],
       zip:['']
     }),
-    aliases: this.formBuilder.array([])
+    aliases: this.formBuilder.array([''])
   });
 
   get aliases() {
@@ -41,6 +41,7 @@ export class ProfileEditorComponent {
   }
 
   addAlias() {   
+   
     this.aliases.push(this.formBuilder.control(''));
   }
 
@@ -49,6 +50,14 @@ export class ProfileEditorComponent {
   }
 
   updateProfile() {
+
+    //Even thogh profileForm1 is defined as strictly typed form control which can take number, patchValue still allows to set the string value
+    this.profileForm1.patchValue({
+      firstName: 'name'
+    });
+
+    this.profileForm1.value.firstName = 'tt';
+    console.log(this.profileForm1);
 
     this.profileForm.patchValue({
       firstName: 'Nancy',
