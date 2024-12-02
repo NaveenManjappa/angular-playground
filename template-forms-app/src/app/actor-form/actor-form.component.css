@@ -2,11 +2,9 @@ button {
   margin-right: 12px;
 }
 
-.no-style .ng-valid {
-  border-left: 1px solid #ccc;
-}
 
-.no-style .ng-invalid {
-  border-left: 1px solid #ccc;
+
+form {
+  max-width: 500px;
 }
 
