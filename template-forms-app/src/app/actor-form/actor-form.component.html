@@ -1,0 +1,60 @@
+ <div class="container">
+  <h1>Actor Form</h1>
+  <div [hidden]="submitted">
+    {{ model | json}}
+  <form (ngSubmit)="onSubmit(actorForm)" #actorForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" class="form-control" required name="name"  [(ngModel)]="model.name">
+      
+    </div>
+
+    <div class="form-group">
+      <label for="studio">Studio Affiliation</label>
+      <input type="text" id="studio" class="form-control" name="studio"   [(ngModel)]="model.studio">
+    </div>
+
+    <div class="form-group">
+      <label for="skill">Skill</label>
+      <select class="form-control" id="skill" required  name="skill" [(ngModel)]="model.skill">
+       <option *ngFor="let skill of skills" [value]="skill">{{skill}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success"  [disabled]="!actorForm.valid">Submit</button>
+    <button type="button" class="btn btn-primary" (click)="newActor();actorForm.reset()">New Actor</button>
+    <em>with</em> reset
+    <button type="button" class="btn btn-default" (click)="newActor()">New Actor</button>
+    <em>without</em> reset
+
+    <div>
+      <hr>
+      Name via form.controls = {{ showFormControls(actorForm)}}
+    </div>
+  </form>
+  </div>
+  <!-- End of actor form -->
+   <div [hidden]="!submitted">
+      <h2>You submitted the following:</h2>
+      <div class="row">
+        <div class="col-xs-3">Name</div>
+        <div class="col-xs-9">{{ model.name }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Studio</div>
+        <div class="col-xs-6">{{model.studio}}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Skill</div>
+        <div class="col-xs-6">{{model.skill}}</div>
+      </div>
+        <br>
+      <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
+   </div>
+
+</div>
+
+<div>
+  <form></form>
+</div>
+<hr>
