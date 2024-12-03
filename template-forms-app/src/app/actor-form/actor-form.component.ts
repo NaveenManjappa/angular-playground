@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Actor } from '../actor';
 import { Form, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ForbiddenNameDirective } from '../../shared/forbidden-name.directive';
 
 @Component({
   selector: 'app-actor-form',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,ForbiddenNameDirective],
   templateUrl: './actor-form.component.html',
   styleUrl: './actor-form.component.css'
 })
@@ -19,7 +20,7 @@ export class ActorFormComponent {
   submitted = false;
 
   onSubmit(actorForm:any) {
-    console.log(actorForm.form.controls);
+    console.log(actorForm.form);
     this.submitted = true;
   }
 
