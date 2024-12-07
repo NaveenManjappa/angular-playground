@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Actor } from '../shared/actor';
-import { forbiddenNameValidator } from '../shared/forbiddenName';
+import { forbiddenNameValidator } from '../shared/forbiddenNameValidator';
+import { unambiguousRoleValidator } from '../shared/unambiguousRole';
 
 @Component({
   selector: 'app-actor-form',
@@ -25,9 +26,10 @@ export class ActorFormComponent implements OnInit {
         Validators.minLength(3),
         forbiddenNameValidator(/bob/i)
       ]),
+      role: new FormControl(),
       skill:new FormControl(this.model.skill,Validators.required),
       studio:new FormControl(this.model.studio)
-    });
+    },{validators:unambiguousRoleValidator});
   }
 
 
@@ -54,5 +56,9 @@ export class ActorFormComponent implements OnInit {
 
   get skill(){
     return this.actorForm.get('skill');
+  }
+
+  get role(){
+    return this.actorForm.get('role');
   }
 }
