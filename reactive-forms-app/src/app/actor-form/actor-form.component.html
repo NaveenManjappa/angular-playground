@@ -1,12 +1,17 @@
 <div class="container">
   
   <div [hidden]="submitted">
-    <h1>Actor Form</h1>
+    <h2>Actor Form</h2>
   <p>{{ actorForm.value | json }}</p>
   <form [formGroup]="actorForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" id="name" class="form-control" formControlName="name">
+      <input type="text" id="name" class="form-control" formControlName="name" required="">
+      <div class="alert alert-danger" *ngIf="name?.invalid && (name?.touched || name?.dirty)">
+        <div *ngIf="name?.hasError('required')">Name is required</div>
+        <div *ngIf="name?.hasError('minlength')">Name should be minimum 3 characters</div>
+        <div *ngIf="name?.hasError('forbiddenNameError')">Name cannot be Bob</div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -29,19 +34,19 @@
   <h2>You have submitted the following details:</h2>
   <div class="row">
     <div class="col-xs-3">Name:</div>
-    <div class="col-xs-9">{{actorForm.controls.name.value}}</div>
+    <div class="col-xs-9">{{name?.value}}</div>
   </div>
 
   <div class="row">
     <div class="col-xs-3">Studio:</div>
-    <div class="col-xs-9">{{actorForm.controls.studio.value}}</div>
+    <div class="col-xs-9">{{studio?.value}}</div>
   </div>
 
   <div class="row">
     <div class="col-xs-3">Skill:</div>
-    <div class="col-xs-9">{{actorForm.controls.skill.value}}</div>
+    <div class="col-xs-9">{{skill?.value}}</div>
   </div>
   <br>
-  <button type="submit" class="btn btn-primary">Edit</button>
+  <button type="submit" class="btn btn-primary" (click)="onEdit()">Edit</button>
 </div>
 </div>
