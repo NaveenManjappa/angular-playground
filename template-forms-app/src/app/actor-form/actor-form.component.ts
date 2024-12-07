@@ -3,11 +3,12 @@ import { Actor } from '../actor';
 import { Form, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ForbiddenNameDirective } from '../../shared/forbidden-name.directive';
+import { UnambiguousRoleDirective } from '../../shared/unabiguous-role.directive';
 
 @Component({
   selector: 'app-actor-form',
   standalone: true,
-  imports: [FormsModule,CommonModule,ForbiddenNameDirective],
+  imports: [FormsModule,CommonModule,ForbiddenNameDirective,UnambiguousRoleDirective],
   templateUrl: './actor-form.component.html',
   styleUrl: './actor-form.component.css'
 })
@@ -15,7 +16,7 @@ export class ActorFormComponent {
 
   skills = ['Method Acting','Singing','Dancing','Sword Fighting'];
 
-  model = new Actor(18,'Tom Cruise',this.skills[3],'CW Productions');
+  model = new Actor(18,'Tom Cruise','',this.skills[3],'CW Productions');
 
   submitted = false;
 
@@ -25,7 +26,7 @@ export class ActorFormComponent {
   }
 
   newActor() {
-    this.model = new Actor(42,'','')
+    this.model = new Actor(42,'','','')
   }
 
   showFormControls(form:any) {

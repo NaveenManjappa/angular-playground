@@ -2,7 +2,7 @@
   <h1>Actor Form</h1>
   <div [hidden]="submitted">
     {{ model | json}}
-  <form (ngSubmit)="onSubmit(actorForm)" #actorForm="ngForm">
+  <form (ngSubmit)="onSubmit(actorForm)" #actorForm="ngForm" appUnambiguousrole>
     
     <div class="form-group">
       <label for="name">Name:</label>
@@ -12,6 +12,14 @@
         <div *ngIf="name.hasError('required')">Name is required</div>
         <div *ngIf="name.hasError('minlength')">Name should be atleast 4 characters in length</div>
         <div *ngIf="name.hasError('forbiddenNameError')">Name {{ name.errors?.['forbiddenNameError'].value | json}} is not allowed</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <input type="text" class="form-control" name="role" id="role" [(ngModel)]="model.role">
+      <div class="alert alert-danger" *ngIf="actorForm.invalid && (actorForm.touched || actorForm.dirty)">
+        <div *ngIf="actorForm.hasError('unambiguousRole')">Role cannot be same as name is required</div>
       </div>
     </div>
 
