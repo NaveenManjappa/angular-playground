@@ -2,6 +2,7 @@ import { Directive, Input } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 export function forbiddenNameValidator(regex: RegExp): ValidatorFn {
+  
   return (control:AbstractControl): ValidationErrors | null => {
     const forbidden = regex.test(control.value);
     return forbidden ? { forbiddenNameError: {value:control.value}} : null;
@@ -23,7 +24,6 @@ export class ForbiddenNameDirective implements Validator {
     return this.forbiddenName ?
       forbiddenNameValidator(new RegExp(this.forbiddenName,'i'))(control)
       : null;
-  }
-  
+  }  
 
 }

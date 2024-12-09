@@ -17,9 +17,10 @@
 
     <div class="form-group">
       <label for="role">Role:</label>
-      <input type="text" class="form-control" name="role" id="role" [(ngModel)]="model.role">
+      <input type="text" class="form-control" name="role" id="role" [(ngModel)]="model.role" #role="ngModel" [ngModelOptions]="{updateOn:'blur'}" appUniqueRole>
       <div class="alert alert-danger" *ngIf="actorForm.invalid && (actorForm.touched || actorForm.dirty)">
         <div *ngIf="actorForm.hasError('unambiguousRole')">Role cannot be same as name is required</div>
+        <div *ngIf="role.hasError('uniqueRole')">Role name is already taken</div>
       </div>
     </div>
 

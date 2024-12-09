@@ -4,11 +4,12 @@ import { Form, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ForbiddenNameDirective } from '../../shared/forbidden-name.directive';
 import { UnambiguousRoleDirective } from '../../shared/unabiguous-role.directive';
+import { UniqueRoleDirective } from '../../shared/unique-role.directive';
 
 @Component({
   selector: 'app-actor-form',
   standalone: true,
-  imports: [FormsModule,CommonModule,ForbiddenNameDirective,UnambiguousRoleDirective],
+  imports: [FormsModule,CommonModule,ForbiddenNameDirective,UnambiguousRoleDirective,UniqueRoleDirective],
   templateUrl: './actor-form.component.html',
   styleUrl: './actor-form.component.css'
 })
