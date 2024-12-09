@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Actor } from '../shared/actor';
 import { forbiddenNameValidator } from '../shared/forbiddenNameValidator';
 import { unambiguousRoleValidator } from '../shared/unambiguousRole';
+import { UniqueRoleValidator } from '../shared/uniqueRoleValidators';
 
 @Component({
   selector: 'app-actor-form',
@@ -19,6 +20,9 @@ export class ActorFormComponent implements OnInit {
   submitted = false;
   actorForm!: FormGroup;
 
+  constructor(private uniqueRoleValidator:UniqueRoleValidator){
+
+  }
   ngOnInit(): void {
     this.actorForm = new FormGroup({
       name:new FormControl(this.model.name,[
@@ -26,7 +30,10 @@ export class ActorFormComponent implements OnInit {
         Validators.minLength(3),
         forbiddenNameValidator(/bob/i)
       ]),
-      role: new FormControl(),
+      role: new FormControl('',{
+        asyncValidators:[this.uniqueRoleValidator.validate.bind(this.uniqueRoleValidator)],
+        updateOn:'blur'
+      }),
       skill:new FormControl(this.model.skill,Validators.required),
       studio:new FormControl(this.model.studio)
     },{validators:unambiguousRoleValidator});
@@ -44,6 +51,11 @@ export class ActorFormComponent implements OnInit {
 
   onEdit(){
     this.submitted = false;
+  }
+
+  onBlurred() {
+    console.log('On blur event');
+    console.log(this.actorForm);
   }
 
   get name() {
