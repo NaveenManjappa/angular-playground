@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, forwardRef } from '@angular/core';
 import { AbstractControl, AsyncValidator, NG_ASYNC_VALIDATORS, ValidationErrors } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UniqueRoleValidator } from './unique-role-validator';
@@ -7,7 +7,7 @@ import { UniqueRoleValidator } from './unique-role-validator';
   selector: '[appUniqueRole]',
   providers:[{
     provide:NG_ASYNC_VALIDATORS,
-    useExisting:UniqueRoleDirective,
+    useExisting:forwardRef(() => UniqueRoleDirective),
     multi:true
   }],
   standalone: true

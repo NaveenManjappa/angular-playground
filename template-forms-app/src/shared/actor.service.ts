@@ -9,6 +9,6 @@ export class ActorService {
   constructor() { }
 
   isRoleTaken(role:string) {
-    return of(false);
+    return of(true);
   }
 }
