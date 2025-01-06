@@ -1,0 +1,24 @@
+<div class="counter-container">
+  <div>
+    <h2>Signal Counter: {{ count() }}</h2>
+    <button class="increment-btn" (click)="increment()">Increment</button>
+  </div>
+
+  <div>
+    <h2>Computed Counter: {{ computedCount() }}</h2>
+    <button class="increment-btn" (click)="increment()">Increment</button>
+  </div>
+
+  <div>
+    <h2>Conditional Counter: {{ conditionalCount() }}</h2>
+  </div>
+</div>
+
+<div class="counter-container">
+  <h2>Binding Counter: {{ bCount }}</h2>
+  <button class="increment-btn" (click)="incrementCounter()">Increment</button>
+</div>
+
+<div class="counter-container">
+  <h2>Change detection run: {{ detectionRuns }}</h2>
+</div>
