@@ -1,0 +1,11 @@
+<h2>Input components</h2>
+<button (click)="increment()">Increment volume from parent</button>
+
+<p>Volume from parent is: {{volume()}}</p>
+
+<p>VolumeP from parent is: {{volumeP}}</p>
+
+<input-basics [value]="10" [widthPx]="100" [sliderValue]="104" [(slideValue)]="volume" [(slideValue)]="volumeP" (slideValueChange)="change()" [disabled]="true" inputProp="Input"></input-basics>
+
+
+
