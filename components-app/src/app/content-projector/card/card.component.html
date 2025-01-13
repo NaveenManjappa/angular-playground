@@ -1,0 +1,8 @@
+<div class="card-shadow">     
+  <ng-content select="[card-title]"></ng-content>
+  <div class="card-divider"></div>
+  <ng-content select=".card-body">Fallback content</ng-content>
+  <ng-content></ng-content>  
+  <ng-content select="card-footer"></ng-content>
+  <!-- this is the placeholder without select attribute so it captures all the elements that did not match a select attribute -->
+</div>

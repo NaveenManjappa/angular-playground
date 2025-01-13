@@ -1,0 +1,43 @@
+.card-shadow {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 15px;
+  transition: transform 0.2s;
+}
+
+.card-shadow:hover {
+  transform: translateY(-5px);
+}
+
+.card-divider {
+  height: 2px;
+  background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+  margin: 10px 0;
+  border-radius: 1px;
+}
+
+div[card-title] {
+  color: #2c3e50;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  color: #34495e;
+  line-height: 1.9;
+}
+
+.fallback-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  letter-spacing: 1px;
+  padding: 10px;
+  background: linear-gradient(45deg, #f3f3f3, #fff);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
