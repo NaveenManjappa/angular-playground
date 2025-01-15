@@ -1,7 +1,7 @@
 
 .navigation {
   padding: 1rem;
-  background-color: #4a90e2;
+  background-color: #1f7ce6;
 }
 
 .nav-link {
@@ -10,7 +10,7 @@
   text-decoration: none;
   color: #ffffff;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.9s ease;
   font-size: 1.2rem;
   font-weight: 400;
 }
