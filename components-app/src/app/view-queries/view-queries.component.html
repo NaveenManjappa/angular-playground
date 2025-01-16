@@ -1,0 +1,17 @@
+<h2>Referencing component children with view queries</h2>
+<button (click)="increment()" #button>Increment Child</button>
+<button #save>Save</button>
+<button #save>Save</button>
+<button #save>Save</button>
+<button #save>Save</button>
+<button #save>Save</button>
+<child-view></child-view>
+
+<h2>Content Queries</h2>
+<content-query>
+  <custom-expando>
+    <custom-toggle></custom-toggle>
+    <custom-toggle></custom-toggle>
+  </custom-expando>
+  <custom-expando></custom-expando>
+</content-query>
