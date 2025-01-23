@@ -1,0 +1,21 @@
+
+.navigation {
+  padding: 1rem;
+  background-color: #1f7ce6;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 4px;
+  transition: background-color 0.9s ease;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  background-color: #357abd;
+}
+

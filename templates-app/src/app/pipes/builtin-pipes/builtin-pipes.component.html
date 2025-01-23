@@ -1,0 +1,13 @@
+<main>
+  <h3>Purchases from {{ company | titlecase }} on {{ purchaseOn | date:'dd-MM-YYYY hh:mm':'UTC' | uppercase }}</h3>
+  <p>Total: {{ amount | currency }}</p>
+
+  
+</main>
+<div>
+  <p>Today is {{today | date}}</p>
+  <p>Or if you prefer, {{today | date:'fullDate'}}</p>
+  <p>The time is {{today | date:'h:mm a z'}}</p>
+</div>
+
+
