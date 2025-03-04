@@ -15,5 +15,6 @@ export class TodosHeaderComponent {
   }
   addTodo(){
     this.todoService.addTodo(this.text);
+    this.text = '';
   }
 }
