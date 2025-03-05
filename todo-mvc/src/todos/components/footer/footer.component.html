@@ -1,1 +1,15 @@
-footer
+<footer class="footer">
+  <ul class="filters">
+    <li>
+      <a href="/" [ngClass]="{selected: selectedFilter === 'all'}" (click)="changeFilter($event, filterEnum.all)">All</a>
+    </li>
+    <li>
+      <a href="/" [ngClass]="{selected: selectedFilter === 'active'}" (click)="changeFilter($event, filterEnum.active)">Active</a>
+    </li>
+    <li>
+      <a href="/" [ngClass]="{selected: selectedFilter === 'completed'}" (click)="changeFilter($event, filterEnum.completed)"
+        >Completed</a
+      >
+    </li>
+  </ul>
+</footer>

@@ -75,6 +75,29 @@ body {
   
 }
 
+.footer {
+  display: flex;
+}
+
+.filters {
+  display: flex;
+  list-style: none;  
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.filters li a {
+  text-decoration: none;
+}
+
+.filters li a.selected {
+  color: red;
+}
+
+
 
 
 
