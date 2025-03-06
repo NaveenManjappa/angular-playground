@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { FiltersEnum } from "../../types/filter.enum";
 import { CommonModule } from "@angular/common";
+import { TodosService } from "../../services/todos.service";
 
 @Component({
   selector:'app-todos-footer',
@@ -9,11 +10,14 @@ import { CommonModule } from "@angular/common";
   imports:[CommonModule]
 })
 export class TodosFooterComponent{
-  filterEnum= FiltersEnum;
+  todoService = inject(TodosService);
+  filterEnum = FiltersEnum;
+  filterSig = this.todoService.filter;
+
   selectedFilter='all';
   changeFilter(event:Event,filter:FiltersEnum){
     event.preventDefault();
-    this.selectedFilter = filter;
+    this.filterSig.set(filter);
     console.log(filter);
   }
 }
