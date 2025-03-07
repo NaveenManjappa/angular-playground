@@ -22,7 +22,7 @@ body {
 
 .todoapp {
   background: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   margin: 130px 0 40px 0;
   position: relative;
 }
@@ -41,7 +41,6 @@ body {
   font-style: italic;
   font-weight: 200;
   color: rgba(0, 0, 0, 0.25);
-  
 }
 
 .todoapp input::-moz-placeholder {
@@ -68,25 +67,28 @@ body {
 }
 
 .main {
-
 }
 
 .todo-list {
-  
 }
 
 .footer {
   display: flex;
+  justify-content: space-between;
+  align-items: center; /* Add this line */
+}
+
+.hidden {
+  display: none;
 }
 
 .filters {
   display: flex;
-  list-style: none;  
+  list-style: none;
   width: 100%;
   justify-content: space-evenly;
   padding: 0;
   margin: 0;
-  
 }
 
 .filters li a {
@@ -97,7 +99,10 @@ body {
   color: red;
 }
 
-
-
-
-
+.todo-count {
+  margin-left: auto; /* Add this line */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 10%;
+}

@@ -18,4 +18,8 @@ export class TodosService {
 
     this.todosSig.update(todos => [...todos,newTodo]);
   }
+
+  changeFilter(filterName:FiltersEnum){
+    this.filter.set(filterName);
+  }
 }

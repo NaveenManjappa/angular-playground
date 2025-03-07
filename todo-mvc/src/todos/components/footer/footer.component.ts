@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { FiltersEnum } from "../../types/filter.enum";
 import { CommonModule } from "@angular/common";
 import { TodosService } from "../../services/todos.service";
@@ -14,10 +14,17 @@ export class TodosFooterComponent{
   filterEnum = FiltersEnum;
   filterSig = this.todoService.filter;
 
-  selectedFilter='all';
+  activeCount = computed(() => {
+    return this.todoService.todosSig().filter(t => !t.isCompleted).length;
+  });
+
+  noTodos = computed(() => {
+    return this.todoService.todosSig().length === 0;
+  });
+
   changeFilter(event:Event,filter:FiltersEnum){
     event.preventDefault();
-    this.filterSig.set(filter);
+   this.todoService.changeFilter(filter);
     console.log(filter);
   }
 }
