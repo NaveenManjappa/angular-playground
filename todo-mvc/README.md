@@ -30,3 +30,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 This project is created from the Youtube link tutorial:
 https://youtu.be/S_wTb4pP_6Q?si=IKp_WQUmpCM0FBX7
+
+#Github reference
+https://github.com/monsterlessonsacademy/monsterlessonsacademy/blob/350-todo-app-with-angular-signals/src/styles.css

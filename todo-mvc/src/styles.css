@@ -146,3 +146,12 @@ display: none;
 .todo-list li:hover .destroy {
   display: block;
 }
+
+.toggle {
+
+}
+
+.todo-list li.completed label {
+  text-decoration: line-through;
+  color: #cdcdcd;
+}

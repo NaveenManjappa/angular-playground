@@ -31,6 +31,10 @@ export class TodosService {
     this.todosSig.update(todos => todos.filter(td => td.id !== id));
   }
 
+  toggleTodo(id:string){
+    this.todosSig.update(todos => todos.map(td => td.id === id ? {...td,isCompleted:!td.isCompleted} : td));
+  }
+
   changeFilter(filterName:FiltersEnum){
     this.filter.set(filterName);
   }
