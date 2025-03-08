@@ -107,7 +107,7 @@ body {
 }
 
 .view {
-
+position: relative;
 }
 
 .editing {
@@ -116,4 +116,33 @@ display: none;
 
 .edit {
 
+}
+
+.todo-list li .destroy {
+  display: none;
+  position: absolute;
+  
+  right: 10px;
+  bottom: 0;
+  height: 20px;
+  margin: auto 0;
+  font-size: 18px;
+  color: #cc9a9a;
+  transition: color 0.2s ease-out;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.todo-list li .destroy:hover {
+  color: #af5b5e;
+}
+
+.todo-list li .destroy:after {
+  content: 'x';
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.todo-list li:hover .destroy {
+  display: block;
 }

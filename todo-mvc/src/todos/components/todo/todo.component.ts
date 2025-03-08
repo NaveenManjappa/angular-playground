@@ -34,4 +34,8 @@ export class TodoComponent implements OnInit{
    this.todoService.updateTodo(this.editingText,this.todo.id);
    this.setEditingId.emit(null);
   }
+
+  removeTodo():void {
+    this.todoService.removeTodo(this.todo.id);
+  }
 }
