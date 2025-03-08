@@ -70,6 +70,7 @@ body {
 }
 
 .todo-list {
+  list-style: none;
 }
 
 .footer {
@@ -103,4 +104,16 @@ body {
 .todo-count {
  
   
+}
+
+.view {
+
+}
+
+.editing {
+display: none;
+}
+
+.edit {
+
 }
