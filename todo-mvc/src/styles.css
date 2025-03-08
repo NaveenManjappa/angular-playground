@@ -67,6 +67,7 @@ body {
 }
 
 .main {
+  position: relative;
 }
 
 .todo-list {
@@ -148,10 +149,15 @@ display: none;
 }
 
 .toggle {
-
+  
 }
 
 .todo-list li.completed label {
   text-decoration: line-through;
   color: #cdcdcd;
+}
+
+.toggle-all {
+  position: absolute;
+  top: -55px;
 }

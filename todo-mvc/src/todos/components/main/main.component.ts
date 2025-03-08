@@ -25,7 +25,19 @@ export class TodosMainComponent {
     return todos;
   });
 
+  noTodos = computed(() => {
+    return this.todoService.todosSig().length === 0;
+  });
+
   setEditingId(id:string|null){
     this.editingId = id;
+  }
+
+  isAllTodosSelected = computed(()=>{
+    this.todoService.todosSig().every(todo => todo.isCompleted);
+  });
+
+  toggleAllTodos(event:Event){
+    this.todoService.toggleAll((event.target as HTMLInputElement).checked);
   }
 }
