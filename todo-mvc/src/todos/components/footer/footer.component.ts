@@ -22,6 +22,10 @@ export class TodosFooterComponent{
     return this.todoService.todosSig().length === 0;
   });
 
+  itemsLeftText = computed(() => {
+    return `item${this.todoService.todosSig().length >1 ? 's':''} left`;
+  });
+
   changeFilter(event:Event,filter:FiltersEnum){
     event.preventDefault();
    this.todoService.changeFilter(filter);

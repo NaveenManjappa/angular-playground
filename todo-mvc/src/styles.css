@@ -57,7 +57,7 @@ body {
 
 .new-todo {
   width: 85%;
-  padding: 16px 16px 16px 60px;
+  padding: 16px 16px 16px 40px;
   border: none;
   background: rgba(0, 0, 0, 0.003);
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
@@ -74,7 +74,7 @@ body {
 
 .footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center; /* Add this line */
 }
 
@@ -85,14 +85,15 @@ body {
 .filters {
   display: flex;
   list-style: none;
-  width: 100%;
-  justify-content: space-evenly;
+  width: 65%;
+  
   padding: 0;
   margin: 0;
 }
 
 .filters li a {
   text-decoration: none;
+  margin-left: 20px;
 }
 
 .filters li a.selected {
@@ -100,9 +101,6 @@ body {
 }
 
 .todo-count {
-  margin-left: auto; /* Add this line */
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 10%;
+ 
+  
 }
