@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Reference
+This is the app created from the video tutorial
+
+https://www.youtube.com/watch?v=S_wTb4pP_6Q&t=3060s
+https://github.com/monsterlessonsacademy/monsterlessonsacademy/blob/472-angular-calendar-tutorial/src/app/calendar/calendar.component.css
