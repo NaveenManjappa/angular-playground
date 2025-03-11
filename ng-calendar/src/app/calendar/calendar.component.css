@@ -46,7 +46,7 @@
 }
 
 .calendar-grid-cell-inactive {
-
+  background: #e7e6e6;
 }
 
 .calendar-grid {
@@ -72,4 +72,13 @@
 
 .calendar-grid-cell-active {
   background: #9ba3bf;
+}
+
+.schedule {
+  margin-left: 10px;
+}
+
+.schedule-headline {
+  font-weight: 600;
+  margin-bottom: 30px;
 }

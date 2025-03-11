@@ -11,4 +11,10 @@ import { CalendarComponent } from "./calendar/calendar.component";
 })
 export class AppComponent {
   title = 'ng-calendar';
+  meetings = {
+    '2025-03-05':['Drink Coffee','Learn React','Sleep'],
+    '2025-03-06':['Drink Coffee','Learn Angular','Sleep']
+  };
+
+  
 }
