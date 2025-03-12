@@ -1,0 +1,51 @@
+.sidenav {
+  background: #012a5b;
+  transition: all 0.5s  ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 16.5625rem;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+}
+
+.sidenav .logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem 0.938rem 0 0.938rem;
+  width: 100%;
+}
+
+.sidenav .logo-container .logo {
+  background: #fff;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+.sidenav .logo-container .logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.sidenav .logo-container .btn-close {
+  margin-left: 1.5rem;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+}
+
+.sidenav .logo-container .btn-close .fa-xmark {
+  color: #fff;
+  font-size: 24px;
+}
