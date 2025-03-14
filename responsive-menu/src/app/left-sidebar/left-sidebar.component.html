@@ -1,12 +1,17 @@
-<div class="sidenav">
+<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed':''">
   <div class="logo-container">
-    <button class="logo">
+    <button class="logo" (click)="toggleCollapse()">
       <i class="fa-solid fa-bars"></i>
     </button>
-    <div class="logo-text">Side Menu</div>
-    <button class="btn-close">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
+    @if(!isLeftSidebarCollapsed()){
+      <div class="logo-text">Side Menu</div>
+    }
+    @if(!isLeftSidebarCollapsed()){
+      <button class="btn-close" (click)="closeSidenav()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    }
+    
   </div>
 
   <div class="sidenav-nav">
@@ -19,7 +24,12 @@
         [routerLinkActiveOptions]="{ exact: true }"
       >
         <i class="sidenav-link-icon" [class]="item.icon"></i>
-        <span class="sidenav-link-text">{{ item.label }}</span></a
+        @if(!isLeftSidebarCollapsed()){
+          <span class="sidenav-link-text">{{ item.label }}</span>
+        
+        }
+        
+        </a
       >
     </li>
     }

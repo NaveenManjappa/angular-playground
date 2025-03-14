@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, input, output } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-left-sidebar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './left-sidebar.component.html',
   styleUrl: './left-sidebar.component.css'
 })
@@ -15,4 +16,15 @@ items = [
   { routeLink:'products',label:'Products',icon:'fa-solid fa-box-open'},
   { routeLink:'settings',label:'Settings',icon:'fa-solid fa-gear'}
 ];
+
+isLeftSidebarCollapsed = input.required<boolean>();
+changeIsLeftSidebarCollapsed = output<boolean>();
+
+toggleCollapse(){
+  this.changeIsLeftSidebarCollapsed.emit(!this.isLeftSidebarCollapsed());
+}
+
+closeSidenav():void {
+  this.changeIsLeftSidebarCollapsed.emit(true);
+}
 }

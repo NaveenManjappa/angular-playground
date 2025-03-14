@@ -4,10 +4,9 @@
   z-index: 0;
   position: relative;
   top: 0;
-  padding: 3rem;
   transition: all 0.5s ease;
   background: #f4f7fa;
-
+  padding: 3rem;
 }
 
 .body-trimmed {
@@ -15,8 +14,7 @@
   margin-left: 16.5625rem;
 }
 
-
 .body-md-screen {
-  width: calc(100%-5rem);
+  width: calc(100% - 5rem);
   margin-left: 5rem;
 }
