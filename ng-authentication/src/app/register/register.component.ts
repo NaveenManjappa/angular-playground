@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserInterface } from '../user.interface';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +12,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class RegisterComponent {
 fb:FormBuilder = inject(FormBuilder);
+http = inject(HttpClient);
 form:FormGroup;
   /**
    *
@@ -24,6 +27,10 @@ form:FormGroup;
   }
 
   onSubmit():void {
-    console.log(this.form);
+    this.http.post<{user:UserInterface}>('https://api.realworld.io/api/users',{
+      user:this.form.getRawValue()
+    }).subscribe(res => {
+      console.log(res);
+    })
   }
 }
