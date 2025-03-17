@@ -9,6 +9,6 @@ import { ArticleInterface } from './article.interface';
 export class ArticleService {
   http = inject(HttpClient);
   getArticles(searchValue:string):Observable<ArticleInterface[]>{
-    return this.http.get<ArticleInterface[]>(`http://localhost:3000/articles?title_like=${searchValue}`);
+    return this.http.get<ArticleInterface[]>(`http://localhost:3000/articles?title_like=${encodeURIComponent(searchValue)}`);
   }
 }
