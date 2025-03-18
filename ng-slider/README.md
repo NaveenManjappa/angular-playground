@@ -28,3 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Reference
 This is from the youtube video: https://youtu.be/S_wTb4pP_6Q?si=3FN6U6bU2xnbmkJp&t=8954
+https://github.com/monsterlessonsacademy/monsterlessonsacademy/tree/266-angular-slider
