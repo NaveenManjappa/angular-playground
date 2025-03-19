@@ -7,6 +7,14 @@
       <div class="comment-author">{{comment.username}}</div>
     </div>
     <div class="comment-text">{{comment.body}}</div>
+    Comment form editing
+    <div class="comment-actions">
+      <div *ngIf="canReply" class="comment-action" (click)="setActiveComment.emit({id:comment.id,type:activeCommentType.replying})">Reply</div>
+      <div *ngIf="canEdit" class="comment-action" (click)="setActiveComment.emit({id:comment.id,type:activeCommentType.editing})">Edit</div>
+      <div *ngIf="canDelete" class="comment-action">Delete</div>
+    </div>
+    Comment form replying
+    Replies
   </div>
   
 </div>

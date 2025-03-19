@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommentsService } from '../services/comments.service';
 import { CommentInterface } from '../types/comments.interface';
+import { ActiveCommentInterface } from '../types/active-comment.interface';
 
 @Component({
   selector: 'comments',  
@@ -10,7 +11,7 @@ import { CommentInterface } from '../types/comments.interface';
 export class CommentsComponent implements OnInit {
   @Input() currentUserId!:string;
   comments:CommentInterface[] = [];
-
+  activeComment:ActiveCommentInterface | null = null;
   constructor(private commentService:CommentsService) {    
     
   }
@@ -26,6 +27,14 @@ export class CommentsComponent implements OnInit {
       console.log(comment);
       this.comments = [...this.comments,comment];
     })
+  }
+
+  getReplies(commentId:string):CommentInterface[]{
+    return this.comments.filter(comment => comment.parentId === commentId).sort((a,b) => new Date(a.createdAt).getMilliseconds() - new Date(b.createdAt).getMilliseconds() );
+  }
+
+  setActiveComment(activeComment:ActiveCommentInterface | null):void {
+    this.activeComment = activeComment;
   }
 
 }
