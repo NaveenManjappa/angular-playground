@@ -1,1 +1,6 @@
-<pagination></pagination>
+<pagination
+  [currentPage]="currentPage"
+  [limit]="20"
+  [total]="402"
+  (changePage)="changePage($event)"
+></pagination>
