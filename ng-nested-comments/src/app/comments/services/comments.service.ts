@@ -13,4 +13,8 @@ export class CommentsService {
   getComments():Observable<CommentInterface[]>{
     return this.httpClient.get<CommentInterface[]>('http://localhost:3000/comments');
   }
+
+  createComment(text:string,parentId:string|null):Observable<CommentInterface>{
+    return this.httpClient.post<CommentInterface>('http://localhost:3000/comments',{body:text,parentId:parentId,createdAt:new Date().toISOString(),userId:'1',username:'John'})
+  }
 }

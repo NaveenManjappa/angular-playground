@@ -20,4 +20,12 @@ export class CommentsComponent implements OnInit {
     });
   }
 
+  addComment({text,parentId}:{text:string,parentId:string | null}):void {
+    console.log(text,parentId);
+    this.commentService.createComment(text,parentId).subscribe(comment => {
+      console.log(comment);
+      this.comments = [...this.comments,comment];
+    })
+  }
+
 }

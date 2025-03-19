@@ -4,15 +4,17 @@ import { CommentsComponent } from './comments/comments.component';
 import { CommentsService } from './services/comments.service';
 import { HttpClient } from '@angular/common/http';
 import { CommentComponent } from './comments/comment/comment.component';
+import { CommentFormComponent } from './comments/comment-form/comment-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [CommentsComponent,CommentComponent],
+  declarations: [CommentsComponent,CommentComponent,CommentFormComponent],
   imports: [
-    CommonModule
+    CommonModule,ReactiveFormsModule
   ],
-  exports:[CommentsComponent,CommentComponent],
+  exports:[CommentsComponent,CommentComponent,CommentFormComponent],
   providers:[CommentsService]
 })
 export class CommentsModule { }
