@@ -13,12 +13,20 @@ export class CommentComponent implements OnInit{
   @Input() comment!:CommentInterface;
   @Input() currentUserId!:string;
   @Input() replies!:CommentInterface[];
+  @Input() activeComment!:ActiveCommentInterface | null;
+  @Input() parentId:string | null = null;
 
   @Output() setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
+  @Output() addComment = new EventEmitter<{text:string,parentId:string | null}>();
+  @Output() updateComment = new EventEmitter<{text:string,commentId:string}>();
+
+  @Output() deleteComment = new EventEmitter<string>();
 
   canReply:boolean = false;
   canEdit:boolean = false;
   canDelete:boolean=false;
+
+  replyId:string | null =null;
 
   activeCommentType = ActiveCommentType;
 
@@ -33,5 +41,26 @@ export class CommentComponent implements OnInit{
     this.canReply = Boolean(this.currentUserId);
     this.canEdit = this.currentUserId === this.comment.userId && !timePassed;
     this.canDelete = this.currentUserId === this.comment.userId && !timePassed && this.replies?.length === 0;
+   this.replyId = this.parentId ? this.parentId : this.comment.id;
+  }
+
+  isReplying():boolean{
+    
+    if(!this.activeComment)
+      return false;
+    
+    return (
+      this.activeComment.id === this.comment.id && 
+      this.activeComment.type === this.activeCommentType.replying
+    );
+  }
+
+  isEditing():boolean{
+    if(!this.activeComment)
+      return false;
+    return (
+      this.activeComment.id === this.comment.id && 
+      this.activeComment.type === this.activeCommentType.editing
+    )
   }
 }

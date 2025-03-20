@@ -17,4 +17,16 @@ export class CommentsService {
   createComment(text:string,parentId:string|null):Observable<CommentInterface>{
     return this.httpClient.post<CommentInterface>('http://localhost:3000/comments',{body:text,parentId:parentId,createdAt:new Date().toISOString(),userId:'1',username:'John'})
   }
+
+  updateComment(id:string,text:string):Observable<CommentInterface>{
+    return this.httpClient.patch<CommentInterface>(`http://localhost:3000/comments/${id}`,
+      {
+        body:text        
+      }
+    );
+  }
+
+  deleteComment(id:string):Observable<{}>{
+    return this.httpClient.delete(`http://localhost:3000/comments/${id}`);
+  }
 }

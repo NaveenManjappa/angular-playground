@@ -17,7 +17,7 @@ export class CommentsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.commentService.getComments().subscribe(comments => {
-      this.comments=comments;
+      this.comments = comments;
     });
   }
 
@@ -26,15 +26,34 @@ export class CommentsComponent implements OnInit {
     this.commentService.createComment(text,parentId).subscribe(comment => {
       console.log(comment);
       this.comments = [...this.comments,comment];
+      this.activeComment = null;
     })
   }
 
   getReplies(commentId:string):CommentInterface[]{
-    return this.comments.filter(comment => comment.parentId === commentId).sort((a,b) => new Date(a.createdAt).getMilliseconds() - new Date(b.createdAt).getMilliseconds() );
+    return this.comments.filter(comment => comment.parentId === commentId).sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() );
   }
 
   setActiveComment(activeComment:ActiveCommentInterface | null):void {
+    console.log('Actice comment',activeComment);
     this.activeComment = activeComment;
+  }
+
+  updateComment({text,commentId}:{text:string,commentId:string}):void {
+    this.commentService.updateComment(commentId,text).subscribe(updatedComment => {
+      this.comments = this.comments.map(comment => {
+        if(comment.id === commentId)
+          return updatedComment;
+        return comment;
+      });
+      this.activeComment = null;
+    });
+  }
+
+  deleteComment(id:string):void {
+    this.commentService.deleteComment(id).subscribe(()=> {
+      this.comments = this.comments.filter(c => c.id !== id);
+    })
   }
 
 }

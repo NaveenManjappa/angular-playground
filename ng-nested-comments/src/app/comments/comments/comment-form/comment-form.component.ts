@@ -11,6 +11,7 @@ export class CommentFormComponent implements OnInit {
   @Input() hasCancelButton:boolean = false;
   @Input() initialText:string = '';
   @Output() handleSubmit = new EventEmitter<string>();
+  @Output() handleCancel = new EventEmitter<void>();
   form!:FormGroup;
   
   constructor(private fb:FormBuilder){ }
@@ -23,6 +24,7 @@ export class CommentFormComponent implements OnInit {
   onSubmit():void {
     console.log(this.form.value);
     this.handleSubmit.emit(this.form.value.title);
+    this.form.reset();
   }
 
   

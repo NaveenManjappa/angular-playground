@@ -8,6 +8,7 @@
     *ngIf="hasCancelButton"
     type="button"
     class="comment-form-button comment-form-cancel-button"
+    (click)="handleCancel.emit()"
   >
     Cancel
   </button>
