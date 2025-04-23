@@ -1,0 +1,33 @@
+<div class="container mx-auto p-6">
+  <div class="bg-white rounded-lg shadow-lg p-6">
+    <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+    <div class="bg-blue-100 border-l-4 border-blue-500 p-4 mb-6">
+      <p class="text-blue-700">
+        This is a protected route. You can only see this content if you're
+        authenticated.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gray-100 rounded-lg p-6">
+        <h2 class="text-xl font-semibold mb-4">Route Protection Demo</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Uses AuthGuard</li>
+          <li>Redirects to login if not authenticated</li>
+          <li>Remembers attempted URL</li>
+          <li>Redirects back after login</li>
+        </ul>
+      </div>
+
+      <div class="bg-gray-100 rounded-lg p-6">
+        <h2 class="text-xl font-semibold mb-4">Authentication Features</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>JWT token handling (simulated)</li>
+          <li>Route guards</li>
+          <li>Login state persistence</li>
+          <li>Secure routing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

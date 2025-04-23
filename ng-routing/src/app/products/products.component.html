@@ -1,0 +1,72 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6">Products</h1>
+
+  <!-- Loading State -->
+  <div
+    *ngIf="loading"
+    class="text-center py-8"
+    role="status"
+    aria-live="polite"
+  >
+    <div
+      class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"
+    ></div>
+    <p class="sr-only">Loading products...</p>
+  </div>
+
+  <!-- Error State -->
+  <div
+    *ngIf="error"
+    class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4"
+    role="alert"
+    aria-live="assertive"
+  >
+    <p class="font-bold">Error</p>
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Products Grid -->
+  <div
+    *ngIf="!loading && !error"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    role="list"
+    aria-label="Products list"
+  >
+    <!-- Product Card -->
+    <div
+      *ngFor="let product of products; trackBy: trackById"
+      class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+      role="listitem"
+    >
+      <h2 class="text-xl font-semibold mb-2">{{ product.name }}</h2>
+      <p class="text-gray-600 mb-4">{{ product.description }}</p>
+
+      <p
+        class="text-2xl font-bold text-blue-600"
+        [attr.aria-label]="'Price: $' + product.price"
+      >
+        ${{ product.price }}
+      </p>
+
+      <!-- View Details Button -->
+      <a
+        [routerLink]="['/products', product.id]"
+        class="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        role="button"
+        [attr.aria-label]="'View details for ' + product.name"
+        (keydown.enter)="handleKeyPress($any($event))"
+        (keydown.space)="handleKeyPress($any($event))"
+      >
+        View Details
+      </a>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div
+    *ngIf="!loading && !error && (!products || products.length === 0)"
+    class="text-center py-8 text-gray-600"
+  >
+    No products available.
+  </div>
+</div>

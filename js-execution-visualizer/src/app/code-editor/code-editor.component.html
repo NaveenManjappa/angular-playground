@@ -1,0 +1,15 @@
+<!-- src/app/components/code-editor/code-editor.component.html -->
+<div class="bg-white rounded-xl shadow p-4">
+  <textarea [(ngModel)]="code"
+            class="w-full h-40 p-2 border border-gray-300 rounded font-mono text-sm"
+            placeholder="Write JavaScript here..."></textarea>
+  <button (click)="runCode()"
+          class="mt-3 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+    ▶️ Run Simulation
+  </button>
+  <button (click)="engine.nextStep()"
+        class="mt-3 ml-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+  ⏭️ Next Step
+</button>
+
+</div>

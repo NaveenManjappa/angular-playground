@@ -1,0 +1,94 @@
+<div class="min-h-[400px] flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-md w-96">
+    <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+
+    <form
+      (ngSubmit)="onSubmit(loginForm)"
+      #loginForm="ngForm"
+      class="space-y-4"
+    >
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700"
+          >Username</label
+        >
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          required
+          #usernameInput="ngModel"
+          [class]="
+            'mt-1 block w-full rounded-md border p-2 transition-colors duration-200 ' +
+            (usernameInput.invalid && usernameInput.touched
+              ? 'border-red-300'
+              : 'border-gray-300')
+          "
+          placeholder="Enter username"
+        />
+        <div
+          *ngIf="usernameInput.invalid && usernameInput.touched"
+          class="text-red-500 text-sm mt-1"
+        >
+          Username is required
+        </div>
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          #passwordInput="ngModel"
+          [class]="
+            'mt-1 block w-full rounded-md border p-2 transition-colors duration-200 ' +
+            (passwordInput.invalid && passwordInput.touched
+              ? 'border-red-300'
+              : 'border-gray-300')
+          "
+          placeholder="Enter password"
+        />
+        <div
+          *ngIf="passwordInput.invalid && passwordInput.touched"
+          class="text-red-500 text-sm mt-1"
+        >
+          Password is required
+        </div>
+      </div>
+
+      <div
+        *ngIf="error"
+        class="bg-red-50 border-l-4 border-red-400 p-4 text-red-700 text-sm"
+      >
+        {{ error }}
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="!loginForm.form.valid || isLoading"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-blue-300 relative"
+      >
+        <span [class.invisible]="isLoading">Login</span>
+        <div
+          *ngIf="isLoading"
+          class="absolute inset-0 flex items-center justify-center"
+        >
+          <div
+            class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+          ></div>
+        </div>
+      </button>
+    </form>
+
+    <div class="mt-4 text-sm text-gray-600 text-center">
+      <p>Use these credentials to test:</p>
+      <p>Username: <span class="font-mono">admin</span></p>
+      <p>Password: <span class="font-mono">admin</span></p>
+    </div>
+  </div>
+</div>

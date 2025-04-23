@@ -1,0 +1,72 @@
+<div class="container mx-auto p-6">
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold mb-4">Angular Routing Demo</h1>
+    <p class="text-xl text-gray-600">
+      Explore various routing features in Angular
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Basic Routing -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold mb-4">Basic Routing</h2>
+      <p class="text-gray-600 mb-4">
+        Simple navigation between components using RouterLink
+      </p>
+      <a routerLink="/about" class="text-blue-600 hover:text-blue-800"
+        >Try It →</a
+      >
+    </div>
+
+    <!-- Route Parameters -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold mb-4">Route Parameters</h2>
+      <p class="text-gray-600 mb-4">
+        Dynamic routing with parameters in product details
+      </p>
+      <a routerLink="/products" class="text-blue-600 hover:text-blue-800"
+        >View Products →</a
+      >
+    </div>
+
+    <!-- Protected Routes -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold mb-4">Protected Routes</h2>
+      <p class="text-gray-600 mb-4">
+        Authentication and route guards demonstration
+      </p>
+      <a routerLink="/admin" class="text-blue-600 hover:text-blue-800"
+        >Access Admin →</a
+      >
+    </div>
+
+    <!-- Child Routes -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold mb-4">Child Routes</h2>
+      <p class="text-gray-600 mb-4">
+        Nested routing within the products section
+      </p>
+      <a routerLink="/products" class="text-blue-600 hover:text-blue-800"
+        >Explore Products →</a
+      >
+    </div>
+
+    <!-- Route Guards -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold mb-4">Route Guards</h2>
+      <p class="text-gray-600 mb-4">Protecting routes with authentication</p>
+      <a routerLink="/admin" class="text-blue-600 hover:text-blue-800"
+        >Try Admin Access →</a
+      >
+    </div>
+
+    <!-- 404 Handling -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold mb-4">404 Handling</h2>
+      <p class="text-gray-600 mb-4">Wildcard route for undefined paths</p>
+      <a routerLink="/non-existent" class="text-blue-600 hover:text-blue-800"
+        >Test 404 →</a
+      >
+    </div>
+  </div>
+</div>

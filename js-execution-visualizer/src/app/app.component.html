@@ -1,0 +1,13 @@
+<!-- src/app/app.component.html -->
+<div class="p-6 space-y-4 bg-gray-100 min-h-screen">
+  <h1 class="text-3xl font-bold text-center">🧠 JS Execution Visualizer</h1>
+  <app-code-editor></app-code-editor>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-6">
+    <app-call-stack></app-call-stack>
+    <app-web-api-queue></app-web-api-queue>
+    <app-callback-queue></app-callback-queue>
+    <app-microtask-queue></app-microtask-queue>
+    <app-event-loop></app-event-loop>
+  </div>
+</div>
