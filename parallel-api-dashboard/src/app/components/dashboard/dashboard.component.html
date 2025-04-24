@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+  <h2>User Dashaboard</h2>
+
+  <div class="controls">
+    <button
+      class="btn btn-login"
+      (click)="login()"
+      [disabled]="isLoggedIn || isLoading"
+    >
+      <span *ngIf="!isLoading">Log In</span>
+      <span *ngIf="isLoading">Loading...</span>
+    </button>
+    <button class="btn btn-logout" [disabled]="!isLoggedIn" (click)="logout()">Log out</button>
+  </div>
+
+  <div *ngIf="isLoading" class="status-message loading">
+    <p>Loading dashboard data. Please wait...</p>
+  </div>
+
+  <div *ngIf="!isLoading && !isLoggedIn" class="status-message info">
+    <p>Please login to your dashboard</p>
+  </div>
+
+  <div class="data-area" *ngIf="isLoggedIn && !isLoading && userData">
+    <h3>Welcome! Here's your data:</h3>
+
+    <section class="data-section card">
+      <h4><i class="icon user-icon"></i>Personal Information</h4>
+      <div class="data-content" *ngIf="userInfo; else noInfo">
+        <p><strong>ID:</strong>{{ userInfo.id }}</p>
+        <p><strong>Name:</strong>{{ userInfo.name }}</p>
+        <p><strong>Email:</strong>{{ userInfo.email }}</p>
+        <p>
+          <strong>Joined:</strong>{{ userInfo.joinDtae | date : "longDate" }}
+        </p>
+      </div>
+      <ng-template #noInfo>
+        <p class="section-error">
+          <i class="icon error-icon"></i>
+          Could not load personal information
+        </p>
+      </ng-template>
+    </section>
+
+    <section class="data-section card">
+      <h4><i class="icon settings-icon"></i>Settings</h4>
+      <div class="data-content" *ngIf="settings; else noSettings">
+        <p>
+          <strong>Theme:</strong
+          ><span class="badge theme-{{ settings.theme }}">{{
+            settings.theme
+          }}</span>
+        </p>
+        <p><strong>Language:</strong>{{ settings.language }}</p>
+        <p>
+          <strong>Notifications Enabled:</strong>
+          <span
+            [ngClass]="{
+              'status-enabled': settings.notificationsEnabled,
+              'status-disabled': !settings.notificationsEnabled
+            }"
+            >{{ settings.notificationsEnabled ? "Yes" : "No" }}</span
+          >
+        </p>
+      </div>
+      <ng-template #noSettings>
+        <p class="section-error">
+          <i class="icon error-icon"></i>Could not load user settings
+        </p>
+      </ng-template>
+    </section>
+
+    <section class="data-section card">
+      <h4><i class="icon notification-icon"></i>Notifications:</h4>
+      <div
+        class="data-content"
+        *ngIf="notifications !== null; else noNotifications"
+      >
+        <ul
+          class="notifications-list"
+          *ngIf="
+            notifications && notifications.length > 0;
+            else emptyNotifications
+          "
+        >
+          <li
+            *ngFor="let notification of notifications"
+            [class.read]="notification.read"
+          >
+            <span class="timestamp">{{
+              notification.timestamp | date : "short"
+            }}</span>
+            {{ notification.message }}
+            <span *ngIf="notification.read" class="read-status">(Read)</span>
+          </li>
+        </ul>
+        <ng-template #emptyNotifications>
+          <p>No notifications found!</p>
+        </ng-template>
+      </div>
+
+      <ng-template #noNotifications>
+        <p class="section-error">
+          <i class="icon error-icon"></i>Could not load notifications
+        </p>
+      </ng-template>
+    </section>
+  </div>
+</div>
