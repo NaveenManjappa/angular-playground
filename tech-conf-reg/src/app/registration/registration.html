@@ -1,0 +1,38 @@
+<form [formGroup]="registrationForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+    @if(registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched){
+    @if(registrationForm.get('name')?.hasError('required')){
+    <div style="color: red">Name is required</div>
+    } @if(registrationForm.get('name')?.hasError('hasSpecialChars')){
+    <div style="color: red">Name cannot contain special characters</div>
+    } }
+  </div>
+
+  <br />
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    @if(registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched){
+    @if(registrationForm.get('email')?.hasError('required')){
+    <div style="color: red">Email is required</div>
+    } 
+    @if (registrationForm.get('email')?.hasError('email')) {
+    <div style="color: red">Please enter a valid email address</div>
+    } }
+    @if(registrationForm.get('email')?.hasError('emailExists')){
+      <div style="color: red;">Email address is already taken</div>
+    }
+  </div>
+  @if(registrationForm.get('email')?.pending){
+    <div style="color: blue;">Checking the availability</div>
+  }
+</form>
+<hr />
+<h3>Live Form Data</h3>
+<pre>{{ registrationForm.value | json }}</pre>
+
+<h3>Form Valid?</h3>
+<pre>{{ registrationForm.valid }}</pre>
