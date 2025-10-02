@@ -18,19 +18,48 @@
     @if(registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched){
     @if(registrationForm.get('email')?.hasError('required')){
     <div style="color: red">Email is required</div>
-    } 
-    @if (registrationForm.get('email')?.hasError('email')) {
+    } @if (registrationForm.get('email')?.hasError('email')) {
     <div style="color: red">Please enter a valid email address</div>
     } }
-    @if(registrationForm.get('email')?.hasError('emailExists')){
-      <div style="color: red;">Email address is already taken</div>
+     @if(registrationForm.get('email')?.hasError('emailExists')){
+    <div style="color: red">Email address is already taken</div>
+    } 
+    @if(registrationForm.get('email')?.pending){
+    <div style="color: blue">Checking the availability</div>
     }
   </div>
-  @if(registrationForm.get('email')?.pending){
-    <div style="color: blue;">Checking the availability</div>
-  }
+
+ 
+  <hr/>
+  <div formGroupName="address">
+    <h3>Address</h3>
+    <div>
+      <label for="street">Street:</label>
+      <input type="text" name="street" formControlName="street">
+      @if(registrationForm.get('address.street')?.invalid && registrationForm.get('address.street')?.touched){
+        <div style="color: red;">Street is required</div>
+      }
+    </div>
+    <br>
+    <div>
+      <label for="city">City:</label>
+      <input type="text" name="city" id="city" formControlName="city">
+      @if(registrationForm.get('address.city')?.invalid && registrationForm.get('address.city')?.touched){
+        <div style="color: red;">City is required</div>
+      }
+    </div>
+    <br>
+     <div>
+      <label for="zipCode">Zip Code:</label>
+      <input type="text" name="zipCode" id="zipCode" formControlName="zipCode">
+      @if(registrationForm.get('address.zipCode')?.invalid && registrationForm.get('address.zipCode')?.touched){
+        <div style="color: red;">Zip code is required</div>
+      }
+    </div>
+    
+  </div>
 </form>
-<hr />
+<hr>
 <h3>Live Form Data</h3>
 <pre>{{ registrationForm.value | json }}</pre>
 

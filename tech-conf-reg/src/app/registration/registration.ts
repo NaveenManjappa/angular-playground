@@ -18,7 +18,12 @@ export class Registration implements OnInit{
    ngOnInit(): void {
     this.registrationForm = new FormGroup({
       name: new FormControl(null,[Validators.required,noSpecialCharsValidator]),
-      email:new FormControl(null,[Validators.required,Validators.email],uniqueEmailValidator)
+      email:new FormControl(null,[Validators.required,Validators.email],uniqueEmailValidator),
+      address:new FormGroup({
+        street:new FormControl(null,Validators.required),
+        city:new FormControl(null,Validators.required),
+        zipCode:new FormControl(null,Validators.required)
+      })
     });
   }
 
