@@ -1,0 +1,22 @@
+{
+  "id": "js-basics",
+  "title": "JavaScript Basics",
+  "description": "Test your knowledge of JavaScript fundamentals.",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is the output of the following code?",
+      "codeSnippet": {
+        "language": "javascript",
+        "code": "console.log(typeof NaN);"
+      },
+      "options": [
+        { "id": "a", "text": "'number'" },
+        { "id": "b", "text": "'NaN'" },
+        { "id": "c", "text": "'undefined'" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "NaN stands for Not-a-Number, but its type is actually 'number'."
+    }
+  ]
+}
