@@ -1,0 +1,31 @@
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Test Your Knowledge</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Challenge yourself with our curated collection of technical quizzes. 
+          Select a topic below to begin your journey.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (quiz of quizService.quizzes(); track quiz.id) {
+          <div class="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col h-full">
+            <div class="p-6 flex-grow">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+              </div>
+              <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{{ quiz.title }}</h2>
+              <p class="text-gray-600 leading-relaxed">{{ quiz.description }}</p>
+            </div>
+            <div class="p-6 pt-0 mt-auto">
+              <a [routerLink]="['/quiz', quiz.filename]" 
+                 class="block w-full text-center bg-gray-50 hover:bg-blue-600 text-gray-900 hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 border border-gray-200 hover:border-blue-600">
+                Start Quiz
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>

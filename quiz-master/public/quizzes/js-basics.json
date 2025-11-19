@@ -17,6 +17,128 @@
       ],
       "correctOptionId": "a",
       "explanation": "NaN stands for Not-a-Number, but its type is actually 'number'."
+    },
+    {
+      "id": "q2",
+      "text": "Which of the following is NOT a primitive type in JavaScript?",
+      "options": [
+        { "id": "a", "text": "String" },
+        { "id": "b", "text": "Boolean" },
+        { "id": "c", "text": "Object" },
+        { "id": "d", "text": "Symbol" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "Object is a reference type, not a primitive type. Primitives include String, Number, Boolean, Null, Undefined, Symbol, and BigInt."
+    },
+    {
+      "id": "q3",
+      "text": "What is the result of `2 + '2'` in JavaScript?",
+      "options": [
+        { "id": "a", "text": "4" },
+        { "id": "b", "text": "'22'" },
+        { "id": "c", "text": "NaN" },
+        { "id": "d", "text": "TypeError" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "When the + operator is used with a string, it performs concatenation. The number 2 is converted to a string."
+    },
+    {
+      "id": "q4",
+      "text": "What does the following code output?",
+      "codeSnippet": {
+        "language": "javascript",
+        "code": "console.log(0.1 + 0.2 === 0.3);"
+      },
+      "options": [
+        { "id": "a", "text": "true" },
+        { "id": "b", "text": "false" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Due to floating-point precision issues in binary arithmetic, 0.1 + 0.2 results in 0.30000000000000004, which is not strictly equal to 0.3."
+    },
+    {
+      "id": "q5",
+      "text": "Which method is used to remove the last element from an array?",
+      "options": [
+        { "id": "a", "text": "shift()" },
+        { "id": "b", "text": "unshift()" },
+        { "id": "c", "text": "pop()" },
+        { "id": "d", "text": "push()" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "`pop()` removes the last element. `shift()` removes the first. `push()` adds to the end. `unshift()` adds to the beginning."
+    },
+    {
+      "id": "q6",
+      "text": "What is the output of this code?",
+      "codeSnippet": {
+        "language": "javascript",
+        "code": "let a = [1, 2, 3];\nlet b = a;\nb.push(4);\nconsole.log(a);"
+      },
+      "options": [
+        { "id": "a", "text": "[1, 2, 3]" },
+        { "id": "b", "text": "[1, 2, 3, 4]" },
+        { "id": "c", "text": "Error" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Arrays are reference types. `b` references the same array in memory as `a`. Modifying `b` also modifies `a`."
+    },
+    {
+      "id": "q7",
+      "text": "How do you check if a property exists in an object?",
+      "codeSnippet": {
+        "language": "javascript",
+        "code": "const obj = { a: 1 };"
+      },
+      "options": [
+        { "id": "a", "text": "'a' in obj" },
+        { "id": "b", "text": "obj.has('a')" },
+        { "id": "c", "text": "obj.contains('a')" },
+        { "id": "d", "text": "obj.exists('a')" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The `in` operator returns true if the specified property is in the specified object or its prototype chain."
+    },
+    {
+      "id": "q8",
+      "text": "What is the purpose of `Array.prototype.map()`?",
+      "options": [
+        { "id": "a", "text": "To filter elements based on a condition" },
+        { "id": "b", "text": "To execute a function for each element" },
+        { "id": "c", "text": "To create a new array with the results of calling a function on every element" },
+        { "id": "d", "text": "To reduce the array to a single value" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "`map()` creates a new array populated with the results of calling a provided function on every element in the calling array."
+    },
+    {
+      "id": "q9",
+      "text": "What will be logged to the console?",
+      "codeSnippet": {
+        "language": "javascript",
+        "code": "(function() {\n  console.log(x);\n  var x = 5;\n})();"
+      },
+      "options": [
+        { "id": "a", "text": "5" },
+        { "id": "b", "text": "undefined" },
+        { "id": "c", "text": "ReferenceError" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Due to hoisting, the declaration `var x` is moved to the top of the function scope, but the initialization `x = 5` remains where it is. So `x` is undefined when logged."
+    },
+    {
+      "id": "q10",
+      "text": "Which of the following is a correct way to create a Promise?",
+      "codeSnippet": {
+        "language": "javascript",
+        "code": "// Option A\nnew Promise((resolve, reject) => { ... })\n\n// Option B\nPromise.create((resolve, reject) => { ... })"
+      },
+      "options": [
+        { "id": "a", "text": "Option A" },
+        { "id": "b", "text": "Option B" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Promise constructor takes a function (executor) which receives `resolve` and `reject` arguments."
     }
   ]
 }

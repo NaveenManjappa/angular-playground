@@ -1,0 +1,183 @@
+    <div class="max-w-3xl mx-auto">
+      @if (quizService.activeQuiz(); as quiz) {
+        @if (!quizService.isCompleted()) {
+          <!-- Header Section -->
+          <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-gray-100">
+            <div class="flex justify-between items-center mb-4">
+              <h1 class="text-2xl font-bold text-gray-900">{{ quiz.title }}</h1>
+              <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                Question {{ quizService.questionIndex() + 1 }} / {{ quiz.questions.length }}
+              </span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-100 rounded-full h-2.5">
+              <div class="bg-blue-600 h-2.5 rounded-full transition-all duration-500 ease-out" 
+                   [style.width.%]="quizService.progress()"></div>
+            </div>
+          </div>
+
+          @if (quizService.currentQuestion(); as question) {
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+              <div class="p-8">
+                <h2 class="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">{{ question.text }}</h2>
+                
+                @if (question.codeSnippet) {
+                  <div class="mb-8 rounded-lg overflow-hidden border border-gray-200">
+                    <markdown [data]="getMarkdownCode(question.codeSnippet.language, question.codeSnippet.code)"></markdown>
+                  </div>
+                }
+
+                <div class="space-y-3">
+                  @for (option of question.options; track option.id) {
+                    <button 
+                      (click)="selectOption(question.id, option.id)"
+                      class="w-full text-left p-4 rounded-lg border-2 transition-all duration-200 flex items-center group"
+                      [class.bg-blue-50]="quizService.getUserAnswer(question.id) === option.id"
+                      [class.border-blue-500]="quizService.getUserAnswer(question.id) === option.id"
+                      [class.border-gray-200]="quizService.getUserAnswer(question.id) !== option.id"
+                      [class.hover:border-blue-300]="quizService.getUserAnswer(question.id) !== option.id"
+                      [class.hover:bg-gray-50]="quizService.getUserAnswer(question.id) !== option.id"
+                    >
+                      <div class="w-6 h-6 rounded-full border-2 mr-4 flex items-center justify-center transition-colors"
+                           [class.border-blue-500]="quizService.getUserAnswer(question.id) === option.id"
+                           [class.border-gray-300]="quizService.getUserAnswer(question.id) !== option.id"
+                           [class.group-hover:border-blue-400]="quizService.getUserAnswer(question.id) !== option.id">
+                        @if (quizService.getUserAnswer(question.id) === option.id) {
+                          <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        }
+                      </div>
+                      <span class="text-gray-700 font-medium" 
+                            [class.text-blue-900]="quizService.getUserAnswer(question.id) === option.id">
+                        {{ option.text }}
+                      </span>
+                    </button>
+                  }
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-100">
+                <button 
+                  (click)="quizService.prevQuestion()"
+                  [disabled]="quizService.questionIndex() === 0"
+                  class="px-6 py-2.5 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-gray-600 hover:bg-gray-200 hover:text-gray-900"
+                >
+                  Previous
+                </button>
+                
+                <button 
+                  (click)="quizService.nextQuestion()"
+                  class="px-8 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 shadow-sm hover:shadow transition-all transform hover:-translate-y-0.5"
+                >
+                  {{ quizService.isLastQuestion() ? 'Finish Quiz' : 'Next Question' }}
+                </button>
+              </div>
+            </div>
+          }
+        } @else {
+          <!-- Results View -->
+          <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden text-center">
+            <div class="bg-gradient-to-b from-blue-50 to-white p-10">
+              <h2 class="text-3xl font-bold text-gray-900 mb-2">Quiz Completed!</h2>
+              <p class="text-gray-600 mb-8">Here's how you performed</p>
+              
+              @if (quizService.results(); as results) {
+                <div class="relative inline-flex items-center justify-center mb-8">
+                  <svg class="w-40 h-40 transform -rotate-90">
+                    <circle class="text-gray-200" stroke-width="10" stroke="currentColor" fill="transparent" r="70" cx="80" cy="80" />
+                    <circle class="text-blue-600 transition-all duration-1000 ease-out" stroke-width="10" 
+                            [attr.stroke-dasharray]="440" 
+                            [attr.stroke-dashoffset]="440 - (440 * results.percentage) / 100"
+                            stroke-linecap="round" stroke="currentColor" fill="transparent" r="70" cx="80" cy="80" />
+                  </svg>
+                  <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                    <span class="text-4xl font-bold text-gray-900">{{ results.percentage | number:'1.0-0' }}%</span>
+                    <span class="text-sm text-gray-500 font-medium">Score</span>
+                  </div>
+                </div>
+                
+                <div class="flex justify-center gap-8 mb-8">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-green-600">{{ results.correct }}</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Correct</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-gray-900">{{ results.total }}</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Total</div>
+                  </div>
+                </div>
+              }
+
+              <div class="flex justify-center gap-4">
+                <a routerLink="/" class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors">
+                  Back to Home
+                </a>
+                <button (click)="quizService.resetQuiz()" class="px-6 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 shadow-sm transition-colors">
+                  Retry Quiz
+                </button>
+              </div>
+            </div>
+
+            <!-- Review Section -->
+             <div class="text-left border-t border-gray-100 bg-gray-50 p-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Detailed Review</h3>
+                <div class="space-y-6">
+                  @for (q of quiz.questions; track q.id; let i = $index) {
+                      <div class="bg-white p-6 rounded-lg border shadow-sm" 
+                           [class.border-green-200]="quizService.getUserAnswer(q.id) === q.correctOptionId"
+                           [class.border-red-200]="quizService.getUserAnswer(q.id) !== q.correctOptionId">
+                          <div class="flex items-start gap-3 mb-3">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+                                  [class.bg-green-100]="quizService.getUserAnswer(q.id) === q.correctOptionId"
+                                  [class.text-green-700]="quizService.getUserAnswer(q.id) === q.correctOptionId"
+                                  [class.bg-red-100]="quizService.getUserAnswer(q.id) !== q.correctOptionId"
+                                  [class.text-red-700]="quizService.getUserAnswer(q.id) !== q.correctOptionId">
+                              {{ i + 1 }}
+                            </span>
+                            <div class="flex-grow">
+                              <p class="font-semibold text-gray-900">{{ q.text }}</p>
+                            </div>
+                          </div>
+                          
+                          @if (quizService.getUserAnswer(q.id) !== q.correctOptionId) {
+                              <div class="ml-11 space-y-2 text-sm">
+                                  <div class="flex items-center gap-2 text-red-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Your answer: <span class="font-medium">{{ getOptionText(q, quizService.getUserAnswer(q.id)) }}</span></span>
+                                  </div>
+                                  <div class="flex items-center gap-2 text-green-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Correct answer: <span class="font-medium">{{ getOptionText(q, q.correctOptionId) }}</span></span>
+                                  </div>
+                                  @if (q.explanation) {
+                                      <div class="mt-3 bg-blue-50 p-3 rounded text-blue-800 text-xs leading-relaxed">
+                                        <span class="font-bold block mb-1">Explanation:</span>
+                                        {{ q.explanation }}
+                                      </div>
+                                  }
+                              </div>
+                          } @else {
+                            <div class="ml-11 text-sm text-green-600 flex items-center gap-2">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                              </svg>
+                              Correct!
+                            </div>
+                          }
+                      </div>
+                  }
+                </div>
+             </div>
+          </div>
+        }
+      } @else {
+        <div class="flex flex-col items-center justify-center min-h-[50vh]">
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+          <p class="text-gray-500">Loading quiz...</p>
+        </div>
+      }
+    </div>

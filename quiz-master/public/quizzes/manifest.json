@@ -4,5 +4,11 @@
     "title": "JavaScript Basics",
     "description": "Test your knowledge of JavaScript fundamentals.",
     "filename": "js-basics.json"
+  },
+  {
+    "id": "python-basics",
+    "title": "Python Basics 101",
+    "description": "Test your knowledge of Python fundamentals.",
+    "filename": "python-basics.json"
   }
 ]

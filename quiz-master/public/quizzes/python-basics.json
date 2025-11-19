@@ -1,0 +1,151 @@
+{
+  "id": "python-basics",
+  "title": "Python Basics 101",
+  "description": "Test your knowledge of Python fundamentals.",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "What is the output of the following code?",
+      "codeSnippet": {
+        "language": "python",
+        "code": "print(type(1/2))"
+      },
+      "options": [
+        { "id": "a", "text": "<class 'int'>" },
+        { "id": "b", "text": "<class 'float'>" },
+        { "id": "c", "text": "<class 'decimal'>" },
+        { "id": "d", "text": "<class 'number'>" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "In Python 3, the division operator / always returns a float, even if the result is a whole number."
+    },
+    {
+      "id": "q2",
+      "text": "What will be the output of this slicing operation?",
+      "codeSnippet": {
+        "language": "python",
+        "code": "a = [1, 2, 3, 4, 5]\nprint(a[1:4])"
+      },
+      "options": [
+        { "id": "a", "text": "[1, 2, 3]" },
+        { "id": "b", "text": "[2, 3, 4]" },
+        { "id": "c", "text": "[2, 3, 4, 5]" },
+        { "id": "d", "text": "[1, 2, 3, 4]" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Slicing includes the start index (1) but excludes the end index (4). So it takes elements at indices 1, 2, and 3."
+    },
+    {
+      "id": "q3",
+      "text": "Which of the following is an immutable data type?",
+      "options": [
+        { "id": "a", "text": "List" },
+        { "id": "b", "text": "Dictionary" },
+        { "id": "c", "text": "Set" },
+        { "id": "d", "text": "Tuple" }
+      ],
+      "correctOptionId": "d",
+      "explanation": "Tuples are immutable sequences, meaning their elements cannot be changed after creation. Lists, Dictionaries, and Sets are mutable."
+    },
+    {
+      "id": "q4",
+      "text": "What is the correct way to format a string in Python 3.6+?",
+      "codeSnippet": {
+        "language": "python",
+        "code": "name = 'Alice'"
+      },
+      "options": [
+        { "id": "a", "text": "f'Hello {name}'" },
+        { "id": "b", "text": "'Hello {}'.format(name)" },
+        { "id": "c", "text": "'Hello %s' % name" },
+        { "id": "d", "text": "All of the above" }
+      ],
+      "correctOptionId": "d",
+      "explanation": "All options are valid ways to format strings, but f-strings (Option A) are the most modern and preferred way in Python 3.6+."
+    },
+    {
+      "id": "q5",
+      "text": "What is the purpose of the `__init__` method in a class?",
+      "options": [
+        { "id": "a", "text": "To initialize the class" },
+        { "id": "b", "text": "To initialize a new instance of the class" },
+        { "id": "c", "text": "To create a static method" },
+        { "id": "d", "text": "To return a string representation" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "`__init__` is the constructor method in Python. It is automatically called when a new object (instance) of a class is created."
+    },
+    {
+      "id": "q6",
+      "text": "What is the output of the following code?",
+      "codeSnippet": {
+        "language": "python",
+        "code": "a = [1, 2, 3]\nb = a\nc = [1, 2, 3]\nprint(a is b, a is c)"
+      },
+      "options": [
+        { "id": "a", "text": "True True" },
+        { "id": "b", "text": "True False" },
+        { "id": "c", "text": "False True" },
+        { "id": "d", "text": "False False" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "`a` and `b` point to the same object in memory, so `a is b` is True. `c` is a new list with the same content, but a different object in memory, so `a is c` is False."
+    },
+    {
+      "id": "q7",
+      "text": "What is the result of this list comprehension?",
+      "codeSnippet": {
+        "language": "python",
+        "code": "nums = [x for x in range(5) if x % 2 == 0]\nprint(nums)"
+      },
+      "options": [
+        { "id": "a", "text": "[0, 1, 2, 3, 4]" },
+        { "id": "b", "text": "[1, 3]" },
+        { "id": "c", "text": "[0, 2, 4]" },
+        { "id": "d", "text": "[2, 4]" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "`range(5)` generates 0, 1, 2, 3, 4. The condition `x % 2 == 0` filters for even numbers: 0, 2, 4."
+    },
+    {
+      "id": "q8",
+      "text": "Which keyword is used to define an anonymous function?",
+      "options": [
+        { "id": "a", "text": "def" },
+        { "id": "b", "text": "func" },
+        { "id": "c", "text": "lambda" },
+        { "id": "d", "text": "anonymous" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "The `lambda` keyword is used to create small anonymous functions in Python."
+    },
+    {
+      "id": "q9",
+      "text": "What happens if you try to access a dictionary key that doesn't exist using `[]`?",
+      "codeSnippet": {
+        "language": "python",
+        "code": "d = {'a': 1}\nprint(d['b'])"
+      },
+      "options": [
+        { "id": "a", "text": "Returns None" },
+        { "id": "b", "text": "Returns 0" },
+        { "id": "c", "text": "Raises KeyError" },
+        { "id": "d", "text": "Raises IndexError" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "Accessing a missing key with `[]` raises a `KeyError`. Using `.get('b')` would return `None`."
+    },
+    {
+      "id": "q10",
+      "text": "In a `try-except-else` block, when does the `else` block execute?",
+      "options": [
+        { "id": "a", "text": "Always" },
+        { "id": "b", "text": "When an exception occurs" },
+        { "id": "c", "text": "When no exception occurs" },
+        { "id": "d", "text": "When the finally block is missing" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "The `else` block in a try-except statement is executed only if no exceptions were raised in the `try` block."
+    }
+  ]
+}
